@@ -1,0 +1,13 @@
+.nav-main-container {
+    display: flex;
+    align-items: center;
+    height: 62px;
+}
+
+.nav-text-logo {
+    padding-left: 40px;
+}
+
+.nav-text-logo h4 {
+    color: #fff;
+}
