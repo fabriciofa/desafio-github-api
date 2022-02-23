@@ -1,9 +1,10 @@
 import Button from "components/Button";
 import Navbar from "components/Navbar";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { GithubData } from "types/githubdata";
 import ShowProfile from "./ShowProfile";
 import axios from "axios";
+import ProfileLoader from "./ProfileLoader";
 
 import "./styles.css";
 
@@ -25,7 +26,7 @@ const Profile = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const HandleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsLoading(true);
     axios
@@ -47,7 +48,7 @@ const Profile = () => {
       <Navbar />
       <div className="profile-main-container">
         <div className="profile-card">
-          <form className="profile-form" onSubmit={handleSubmit}>
+          <form className="profile-form" onSubmit={HandleSubmit}>
             <h1>Encontre um perfil Github</h1>
             <input
               type="text"
@@ -60,7 +61,11 @@ const Profile = () => {
             <Button title="Encontrar" />
           </form>
         </div>
-        {githubData && <ShowProfile github={githubData} />}
+        {isLoading ? (
+          <ProfileLoader />
+        ) : (
+          <div>{githubData && <ShowProfile github={githubData} />}</div>
+        )}
       </div>
     </>
   );
