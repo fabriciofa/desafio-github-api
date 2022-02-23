@@ -1,21 +1,28 @@
+import { useState } from "react";
+import { GithubData } from "types/githubdata";
 import ProfileField from "./components/ProfileField";
 import "./styles.css";
 
-const ShowProfile = () => {
+type githubData = {
+  github : GithubData
+}
+
+const ShowProfile = ({ github } : githubData) => {
+
   return (
     <div className="show-profile-container">
       <div className="show-profile-img-container">
         <img
-          src="https://avatars.githubusercontent.com/u/12145230?v=4"
-          alt="UserPic"
+          src={github.avatar_url}
+          alt={github.name}
         />
       </div>
       <div className="show-profile-infos">
         <h6 className="text-primary">Informações</h6>
-        <ProfileField field="Perfil:" value="https://github.com/fabriciofa" hasLink={true} />
-        <ProfileField field="Seguidores:" value="0" />
-        <ProfileField field="Localidade:" value="São Luis, Maranhão" />
-        <ProfileField field="Nome:" value="Fabricio Araújo" />
+        <ProfileField field="Perfil:" value={github.html_url} hasLink={true} />
+        <ProfileField field="Seguidores:" value={github.followers} />
+        <ProfileField field="Localidade:" value={github.location} />
+        <ProfileField field="Nome:" value={github.name} />
       </div>
     </div>
   );
