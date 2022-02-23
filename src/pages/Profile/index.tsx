@@ -1,5 +1,6 @@
 import Button from "components/Button";
 import Navbar from "components/Navbar";
+import ShowProfile from "./ShowProfile";
 
 import "./styles.css";
 
@@ -20,6 +21,7 @@ const Profile = () => {
             <Button title="Encontrar" />
           </form>
         </div>
+        <ShowProfile />
       </div>
     </>
   );
